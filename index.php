@@ -43,5 +43,3 @@ hello('Mariann');
 
 $name = 'Mari-Ann';
 echo " don't be \n an a** $name";
-
-pla
