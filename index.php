@@ -42,16 +42,7 @@ echo " don't be \n an a** $name";
 
 // <?php see peab ka alguses olema
 
-class Box {
-    public $width;
-    public $height;
-    public $length;
-
-    public function volume(){
-        return $this-> width * $this-> height * $this-> length;
-    }
-}
-
+/*
 $box1 = new Box();
 $box1->width = 10;
 $box1->height = 20;
@@ -66,3 +57,72 @@ $box2->length = 50;
 var_dump($box2);
 var_dump($box2->volume());
 var_dump($box1);
+*/
+/*
+$var1 = 1;
+$var2 = $var1;
+$var2 = 2;
+var_dump($var1);
+
+$box1 = new Box();
+$box1->height = 1;
+$box2 = $box1;
+$box2->height = 2;
+var_dump($box1->height); //objektide sättimine töötab teisel põhimõttel
+var_dump($box1);
+var_dump($box2);
+*/
+
+class Box {
+    public $width;
+    protected $height;
+    private $length;
+
+    public function volume(){
+        return $this-> width * $this-> height * $this-> length;
+    }
+    public function visibility() {
+        $this->width = 2;
+        var_dump($this->width);
+    }
+}
+
+class MetalBox extends Box {
+    public $weightPerUnit;
+    public $material = 'Metal';
+    public function mass (){
+        return $this->volume() * $this->weightPerUnit;
+    }
+    public function childVisibility() {
+        $this->length = 2;
+        var_dump($this->length);
+    }
+}
+
+$box1 = new MetalBox();
+$box1->visibility();
+$box1->childVisibility();
+$box1->length = 2;
+var_dump($box1->length);
+
+
+
+class Box {
+    public $width;  // Sa saad sellele ligi igalt poolt
+    protected $height;  // Sa saad sellele ligi ainult klassis ja alamklassides
+    private $length;  // Sa saad sellele ligi ainult klassis, kus see on määratud
+
+    public function volume(){
+        return $this->width * $this->height * $this->length;
+    }
+
+    public function visibility() {
+        $this->width = 2;
+        var_dump($this->width);  // Sa saad seda välja printida, kuna see on public
+    }
+}
+
+$box = new Box();
+$box->visibility();  // See töötab, kuna visibility on public
+// $box->height = 5; // See ei tööta, kuna height on protected
+// $box->length = 10; // See ei tööta, kuna length on private
