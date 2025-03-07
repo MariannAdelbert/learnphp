@@ -72,7 +72,7 @@ var_dump($box1->height); //objektide sättimine töötab teisel põhimõttel
 var_dump($box1);
 var_dump($box2);
 */
-
+/*
 class Box {
     public $width;
     protected $height;
@@ -126,3 +126,41 @@ $box = new Box();
 $box->visibility();  // See töötab, kuna visibility on public
 // $box->height = 5; // See ei tööta, kuna height on protected
 // $box->length = 10; // See ei tööta, kuna length on private
+*/
+
+
+class Cat {
+    use HasWeight;
+}
+
+class Gun {
+    use HasWeight, HasAmmo;
+}
+class crossBow {
+    use HasAmmo;
+}
+trait Hasammo {
+    public $ammo;
+}
+
+trait HasWeight {
+    private $weight;
+
+    public function getWeight(){
+        return $this->weight;
+    }
+    public function setWeight(){
+        $this->weight = $weight;
+        if($weight < 0) {
+            $this->$weight = 0 ;
+        }
+    }
+}
+
+$cat = new Cat();
+$gun = new Gun();
+$crossbow = new CrossBow ();
+var_dump($cat, $gun, $crossbow);
+
+
+
