@@ -126,7 +126,7 @@ $box = new Box();
 $box->visibility();  // See töötab, kuna visibility on public
 // $box->height = 5; // See ei tööta, kuna height on protected
 // $box->length = 10; // See ei tööta, kuna length on private
-*/
+
 
 
 class Cat {
@@ -163,4 +163,4 @@ $crossbow = new CrossBow ();
 var_dump($cat, $gun, $crossbow);
 
 
-
+*/
